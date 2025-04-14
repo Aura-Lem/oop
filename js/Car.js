@@ -1,6 +1,6 @@
 /*
     intro() - apibudina masinos modeli ir spalva.
-    drive(km) - burodzius norima nuvaziuoti atstuma yra paskaiciuojamos degalu sanaudos, jei nepakanka degalu, tai ribiniu atveju tiesiog sustoja ir masina issijungia.
+    drive(km) - nurodzius norima nuvaziuoti atstuma yra paskaiciuojamos degalu sanaudos, jei nepakanka degalu, tai ribiniu atveju tiesiog sustoja ir masina issijungia.
     engineOn() - ijungia varikli, jei yra kuro ir jei yra isjungtas.
     engineOff() - isjungia varikli, jei yra ijungtas.
     refill() - uzpilti degalu, bet ne daugiau nei telpa ir jei variklis yra isjungtas. 
@@ -13,6 +13,9 @@ export class Car {
         this.tankMax = tankMax;
         this.tank = 0;
         this.engineIsOn = false;
+        this.engineIsOff = false;
+        this.carMoving = true;
+        this.fuelConsumption = 5.1;
     }
 
     intro() {
@@ -37,5 +40,27 @@ export class Car {
         }  else {
             this.tank = this.tankMax;
         }  
+    }
+
+    engineOn() {
+        if (this.tank < 0) {
+            return 'Tank is empty';
+        } else if (this.engineIsOn === true) {
+            return 'Car is already On.';
+        } else {
+            return this.engineIsOn = true;
+        }
+    }
+
+    drive(km) {
+        let fuelConsumed = km / this.fuelConsumption;
+        if (fuelConsumed >= this.tank) {
+            this.carMoving = false;
+            this.engineIsOn = false;
+            this.engineIsOff = true;
+            this.tank = 0;
+        } else if (fuelConsumed < this.tank) {
+            this.tank = this.tank - fuelConsumed.toFixed(1);
+        }
     }
 } 
