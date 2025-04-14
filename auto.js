@@ -1,7 +1,7 @@
 import {Car} from './js/Car.js';
 
-const volvo = new Car('Volvo S40', 'red', 55);
-const zapas = new Car('Zapas', 'white', 35);
+const volvo = new Car('Volvo S40', 'red', 55, 5.1);
+const zapas = new Car('Zapas', 'white', 35, 6.2);
 console.log(volvo.intro());
 console.log(zapas.intro());
 zapas.refill(5);
@@ -17,5 +17,5 @@ console.log(zapas);
 console.log(zapas.engineOn());
 zapas.drive(50);
 console.log(zapas);
-zapas.drive(150);
+zapas.drive(520);
 console.log(zapas);

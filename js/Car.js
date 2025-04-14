@@ -7,15 +7,15 @@
 */
 
 export class Car {
-    constructor(model, color, tankMax) {
+    constructor(model, color, tankMax, fuelConsumption) {
         this.model = model;
         this.color = color;
         this.tankMax = tankMax;
+        this.fuelConsumption = fuelConsumption;
         this.tank = 0;
         this.engineIsOn = false;
         this.engineIsOff = false;
-        this.carMoving = true;
-        this.fuelConsumption = 5.1;
+        this.carMoving = true; 
     }
 
     intro() {
@@ -53,7 +53,7 @@ export class Car {
     }
 
     drive(km) {
-        let fuelConsumed = km / this.fuelConsumption;
+        let fuelConsumed = (km * this.fuelConsumption) / 100;
         if (fuelConsumed >= this.tank) {
             this.carMoving = false;
             this.engineIsOn = false;
