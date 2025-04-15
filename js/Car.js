@@ -14,7 +14,6 @@ export class Car {
         this.fuelConsumption = fuelConsumption;
         this.tank = 0;
         this.engineIsOn = false;
-        this.engineIsOff = false;
         this.carMoving = true; 
     }
 
@@ -43,13 +42,20 @@ export class Car {
     }
 
     engineOn() {
-        if (this.tank < 0) {
+        if (this.tank === 0) {
             return 'Tank is empty';
-        } else if (this.engineIsOn === true) {
+        } else if (this.engineIsOn) {
             return 'Car is already On.';
         } else {
             return this.engineIsOn = true;
         }
+    }
+
+    engineOff() {
+        if (!this.engineIsOn) {
+            return 'Error: engine is already turned off.';
+        }
+        this.engineIsOn = false;
     }
 
     drive(km) {
