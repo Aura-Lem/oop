@@ -44,3 +44,4 @@ class Tekstas {
 
 console.log(Tekstas.pirmaRaide('labas'));
 console.log(Tekstas.zodziuKiekis('labas rytas'));
+
